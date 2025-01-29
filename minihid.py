@@ -48,6 +48,7 @@ fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeCalSm))
 anchorTime = (0, 0)
 widthTime = 400 - 128
 heightTime = 128
+colonVOffset = 6
 
 # Sizing for calendar
 frameCalendar = 4
@@ -61,7 +62,7 @@ def drawTime(image):
   timeHours = datetime.datetime.now().strftime('%H')
   timeMinutes = datetime.datetime.now().strftime('%M')
 
-  image.text(((anchorTime[0] + (widthTime // 2)), anchorTime[1] + (heightTime / 2)), "∶", colour["black"], font=fontTime, anchor="mm")
+  image.text(((anchorTime[0] + (widthTime // 2)), anchorTime[1] + (heightTime / 2) - colonVOffset), ":", colour["black"], font=fontTime, anchor="mm")
 
   image.text(((anchorTime[0] + (widthTime // 2) - 16), anchorTime[1] + (heightTime / 2)), timeHours, colour["black"], font=fontTime, anchor="rm")
 
