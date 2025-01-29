@@ -36,7 +36,7 @@ fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
 fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
 
-fontSizeTime = 84
+fontSizeTime = 90
 fontTime = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeTime))
 
 fontSizeCalSm = 28
