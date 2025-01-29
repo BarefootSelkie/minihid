@@ -35,8 +35,8 @@ colour = {
 fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
 fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
-fontCalBg = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(64))
-fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(32))
+fontCalBg = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(48))
+fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 
 # Sizing for calendar
 anchorCalendar = (400-128,0)
@@ -54,10 +54,10 @@ def drawCalendar(image):
   print(dateDay)
 
   image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + heightCalendar)], radius=12, fill=None, outline=colour["red"], width=4)
-  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + 42)], radius=12, fill=colour["red"], outline=colour["red"], width=4, corners=(True, True, False, False))
-  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 21), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
-  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 80), dateNumber, colour["black"], font=fontCalBg, anchor="mm")
-  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 137), dateDay, colour["black"], font=fontCalSm, anchor="mm")
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + 32)], radius=12, fill=colour["red"], outline=colour["red"], width=4, corners=(True, True, False, False))
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 15), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 60), dateNumber, colour["black"], font=fontCalBg, anchor="mm")
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 102), dateDay, colour["black"], font=fontCalSm, anchor="mm")
 
 display = Image.new(mode="P", size=(400,300), color=(inky.WHITE))
 image = ImageDraw.Draw(display)
