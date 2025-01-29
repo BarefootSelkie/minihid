@@ -36,7 +36,7 @@ fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
 fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
 
-fontSizeTime = 96
+fontSizeTime = 84
 fontTime = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeTime))
 
 fontSizeCalSm = 28
@@ -61,7 +61,7 @@ def drawTime(image):
   timeHours = datetime.datetime.now().strftime('%H')
   timeMinutes = datetime.datetime.now().strftime('%M')
 
-  image.text(((anchorTime[0] + (widthTime // 2)), anchorTime[1] + (heightTime / 2)), ":", colour["black"], font=fontTime, anchor="mm")
+  image.text(((anchorTime[0] + (widthTime // 2)), anchorTime[1] + (heightTime / 2)), "∶", colour["black"], font=fontTime, anchor="mm")
 
   image.text(((anchorTime[0] + (widthTime // 2) - 16), anchorTime[1] + (heightTime / 2)), timeHours, colour["black"], font=fontTime, anchor="rm")
 
