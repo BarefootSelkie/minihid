@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # from inky.auto import auto
-from inky.inky_ac073tc1a import Inky as InkyAC073TC1A
+from inky import InkyWHAT
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 import datetime
 import yaml
@@ -22,3 +22,18 @@ if args.debug:
 else:
   # Otherwise use warn logging
   logging.basicConfig(format="%(asctime)s : %(message)s", filename="warning.log", encoding='utf-8', level=logging.WARN)
+
+
+# Fonts
+fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
+fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
+fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
+
+
+inky = InkyWHAT('red')
+
+display = Image.new(mode="P", size=(400,300), color=(inky.WHITE))
+image = ImageDraw.Draw(display)
+image.text((100, 100), "walandablap", inky.BLACK, font=fontGridSingle, anchor="ma")
+inky.set_image(display)
+inky.show()
