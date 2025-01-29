@@ -48,7 +48,7 @@ fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeCalSm))
 anchorTime = (0, 0)
 widthTime = 400 - 128
 heightTime = 128
-colonVOffset = 6
+colonVOffset = 8
 
 # Sizing for calendar
 frameCalendar = 4
@@ -64,9 +64,9 @@ def drawTime(image):
 
   image.text(((anchorTime[0] + (widthTime // 2)), anchorTime[1] + (heightTime / 2) - colonVOffset), ":", colour["black"], font=fontTime, anchor="mm")
 
-  image.text(((anchorTime[0] + (widthTime // 2) - 16), anchorTime[1] + (heightTime / 2)), timeHours, colour["black"], font=fontTime, anchor="rm")
+  image.text(((anchorTime[0] + (widthTime // 2) - 8), anchorTime[1] + (heightTime / 2)), timeHours, colour["black"], font=fontTime, anchor="rm")
 
-  image.text(((anchorTime[0] + (widthTime // 2) + 16), anchorTime[1] + (heightTime / 2)), timeMinutes, colour["black"], font=fontTime, anchor="lm")
+  image.text(((anchorTime[0] + (widthTime // 2) + 8), anchorTime[1] + (heightTime / 2)), timeMinutes, colour["black"], font=fontTime, anchor="lm")
 
 # Draw the calendar square in top right of screen
 def drawCalendar(image):
