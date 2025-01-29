@@ -1,5 +1,6 @@
 # MacOS stuff
 .DS*
+ttf/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
