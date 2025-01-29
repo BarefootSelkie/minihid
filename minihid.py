@@ -36,7 +36,7 @@ fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
 fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
 
-fontSizeCalSm = 24
+fontSizeCalSm = 28
 fontSizeCalBg = fontSizeCalSm * 2
 fontCalBg = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeCalBg))
 fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeCalSm))
@@ -59,7 +59,7 @@ def drawCalendar(image):
   print(dateDay)
 
   image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + heightCalendar)], radius=12, fill=None, outline=colour["red"], width=frameCalendar)
-  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + 32)], radius=12, fill=colour["red"], outline=colour["red"], width=frameCalendar, corners=(True, True, False, False))
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + fontSizeCalSm + paddingVCalendar * 2)], radius=12, fill=colour["red"], outline=colour["red"], width=frameCalendar, corners=(True, True, False, False))
   image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + frameCalendar + paddingVCalendar + (fontSizeCalSm // 2)), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
   image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + (heightCalendar//2)), dateNumber, colour["black"], font=fontCalBg, anchor="mm")
   image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + heightCalendar - ((fontSizeCalSm // 2) + paddingVCalendar + frameCalendar)), dateDay, colour["black"], font=fontCalSm, anchor="mm")
