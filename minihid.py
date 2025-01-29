@@ -23,17 +23,41 @@ else:
   # Otherwise use warn logging
   logging.basicConfig(format="%(asctime)s : %(message)s", filename="warning.log", encoding='utf-8', level=logging.WARN)
 
+### Constants ###
+inky = InkyWHAT('red')
+colour = {
+  "black": inky.BLACK,
+  "white": inky.WHITE,
+  "red": inky.RED
+}
 
 # Fonts
 fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
 fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
+fontCalBg = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(64))
+fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(32))
 
+# Sizing for calendar
+anchorCalendar = (400-128,0)
+widthCalendar = 128
+heightCalendar = 128
 
-inky = InkyWHAT('red')
+# Draw the calendar square in top right of screen
+def drawCalendar(image):
+  dateNumber = datetime.date.today().strftime('%d')
+  dateDay = datetime.date.today().strftime('%a')
+  dateMonth = datetime.date.today().strftime('%b')
+
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + heightCalendar)], radius=12, fill=None, outline=colour["red"], width=4)
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + 42)], radius=12, fill=colour["red"], outline=colour["red"], width=4, corners=(True, True, False, False))
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[0] + 21), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[0] + 80), dateNumber, colour["black"], font=fontCalBg, anchor="mm")
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)),anchorCalendar[0] + 137), dateDay, colour["black"], font=fontCalSm, anchor="mm")
 
 display = Image.new(mode="P", size=(400,300), color=(inky.WHITE))
 image = ImageDraw.Draw(display)
-image.text((100, 100), "walandablap", inky.BLACK, font=fontGridSingle, anchor="ma")
+drawCalendar(image)
 inky.set_image(display)
 inky.show()
+
