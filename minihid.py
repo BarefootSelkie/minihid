@@ -35,11 +35,16 @@ colour = {
 fontGridSingle = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(44))
 fontGridDual = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
 fontGridLabel = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(18))
-fontCalBg = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(48))
-fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(24))
+
+fontSizeCalSm = 24
+fontSizeCalBg = fontSizeCalSm * 2
+fontCalBg = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeCalBg))
+fontCalSm = ImageFont.truetype("./ttf/Fredoka-Medium.ttf", int(fontSizeCalSm))
 
 # Sizing for calendar
+frameCalendar = 4
 anchorCalendar = (400-128,0)
+paddingVCalendar = 2
 widthCalendar = 128
 heightCalendar = 128
 
@@ -53,11 +58,11 @@ def drawCalendar(image):
   print(dateNumber)
   print(dateDay)
 
-  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + heightCalendar)], radius=12, fill=None, outline=colour["red"], width=4)
-  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + 32)], radius=12, fill=colour["red"], outline=colour["red"], width=4, corners=(True, True, False, False))
-  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 15), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
-  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 60), dateNumber, colour["black"], font=fontCalBg, anchor="mm")
-  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + 102), dateDay, colour["black"], font=fontCalSm, anchor="mm")
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + heightCalendar)], radius=12, fill=None, outline=colour["red"], width=frameCalendar)
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + 32)], radius=12, fill=colour["red"], outline=colour["red"], width=frameCalendar, corners=(True, True, False, False))
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + frameCalendar + paddingVCalendar + (fontSizeCalSm // 2)), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + (heightCalendar//2)), dateNumber, colour["black"], font=fontCalBg, anchor="mm")
+  image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + heightCalendar - ((fontSizeCalSm // 2) + paddingVCalendar + frameCalendar)), dateDay, colour["black"], font=fontCalSm, anchor="mm")
 
 display = Image.new(mode="P", size=(400,300), color=(inky.WHITE))
 image = ImageDraw.Draw(display)
