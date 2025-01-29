@@ -58,8 +58,8 @@ heightCalendar = 128
 
 # Draw the time in the top left of the screen
 def drawTime(image):
-  timeHours = datetime.date.today().strftime('%H')
-  timeMinutes = datetime.date.today().strftime('%M')
+  timeHours = datetime.datetime.now().strftime('%H')
+  timeMinutes = datetime.datetime.now().strftime('%M')
 
   image.text(((anchorTime[0] + (widthTime // 2)), anchorTime[1] + (heightTime / 2)), ":", colour["black"], font=fontTime, anchor="mm")
 
@@ -75,7 +75,7 @@ def drawCalendar(image):
 
   image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + heightCalendar)], radius=12, fill=None, outline=colour["red"], width=frameCalendar)
 
-  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + fontSizeCalSm + paddingVCalendar * 2)], radius=12, fill=colour["red"], outline=colour["red"], width=frameCalendar, corners=(True, True, False, False))
+  image.rounded_rectangle([anchorCalendar,(anchorCalendar[0] + widthCalendar, anchorCalendar[1] + frameCalendar + fontSizeCalSm + (paddingVCalendar * 2))], radius=12, fill=colour["red"], outline=colour["red"], width=frameCalendar, corners=(True, True, False, False))
 
   image.text(((anchorCalendar[0] + (widthCalendar // 2)), anchorCalendar[1] + frameCalendar + paddingVCalendar + (fontSizeCalSm // 2)), dateMonth, colour["white"], font=fontCalSm, anchor="mm")
 
